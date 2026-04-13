@@ -13,9 +13,13 @@ import lombok.NoArgsConstructor;
 public class Schedule extends BaseEntity{
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 50, nullable = false)
     private String title;
+    @Column(length = 50, nullable = false)
     private String content;
+    @Column(length = 50, nullable = false)
     private String writer;
+    @Column(length = 4, nullable = false)
     private String password;
 
     public Schedule(String title, String content, String writer, String password) {
