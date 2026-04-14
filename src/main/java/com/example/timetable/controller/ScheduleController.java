@@ -1,8 +1,6 @@
 package com.example.timetable.controller;
 
-import com.example.timetable.dto.CreateScheduleRequest;
-import com.example.timetable.dto.CreateScheduleResponse;
-import com.example.timetable.dto.GetOneScheduleResponse;
+import com.example.timetable.dto.*;
 import com.example.timetable.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,5 +26,15 @@ public class ScheduleController {
     @GetMapping("/schedules")
     public List<GetOneScheduleResponse> scheduleGetAll() {
         return scheduleService.getAll();
+    }
+
+    @PutMapping("/schedules/{scheduleId}")
+    public UpdateScheduleResponse scheduleUpdate(@RequestBody CreateScheduleRequest request, @PathVariable Long scheduleId) {
+        return scheduleService.update(request, scheduleId);
+    }
+
+    @DeleteMapping("/schedules/{scheduleId}")
+    public void scheduleDelete(@RequestBody DeleteScheduleRequest request, @PathVariable Long scheduleId) {
+        scheduleService.delete(request, scheduleId);
     }
 }
